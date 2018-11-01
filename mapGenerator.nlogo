@@ -1,18 +1,26 @@
+globals[
+  patch-palette    ; colors of different patches
+]
+
 patches-own [
   ptype
 ]
 
 to setup
   clear-all
+
+  set patch-palette [brown green yellow orange blue red magenta violet lime]
+
   let i 1
   while [i <= number-of-types ]
   [
     ask n-of seeds-per-type patches with [pcolor = 0]
     [
-      set pcolor i
+      set pcolor item i patch-palette
     ]
     set i (i + 1)
   ]
+
   reset-ticks
   reset-timer
 end
@@ -26,6 +34,7 @@ to go
       set pcolor [pcolor] of one-of n
     ]
   ]
+  tick
 end
 @#$#@#$#@
 GRAPHICS-WINDOW
@@ -64,7 +73,7 @@ seeds-per-type
 seeds-per-type
 1
 500
-1.0
+106.0
 1
 1
 NIL
@@ -79,7 +88,7 @@ number-of-types
 number-of-types
 1
 4
-1.0
+2.0
 1
 1
 NIL
@@ -149,10 +158,10 @@ NIL
 MONITOR
 25
 299
-76
+82
 344
-type 1
-count patches with [pcolor = 1]
+green
+count patches with [pcolor = green]
 17
 1
 11
@@ -160,10 +169,10 @@ count patches with [pcolor = 1]
 MONITOR
 27
 349
-82
+84
 394
-type 2
-count patches with [pcolor = 2]
+yellow
+count patches with [pcolor = yellow]
 17
 1
 11
@@ -171,10 +180,10 @@ count patches with [pcolor = 2]
 MONITOR
 27
 402
-82
+84
 447
-type 3
-count patches with [pcolor = 3]
+orange
+count patches with [pcolor = orange]
 17
 1
 11
@@ -184,10 +193,17 @@ MONITOR
 456
 81
 501
-type 4
-count patches with [pcolor = 4]
+blue
+count patches with [pcolor = blue]
 17
 1
+11
+
+OUTPUT
+237
+417
+477
+471
 11
 
 @#$#@#$#@
